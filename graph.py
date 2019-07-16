@@ -4,35 +4,41 @@
 A helper class for the Graph class that defines vertices and vertex neighbors.
 """
 
-
+# class Node(object):
 class Vertex(object):
+# class Point(object): # Worst one on my opinion
 
     def __init__(self, vertex):
         """Initialize a vertex and its neighbors.
-
         neighbors: set of vertices adjacent to self,
         stored in a dictionary with key = vertex,
         value = weight of edge between self and neighbor.
         """
-        self.id = vertex
+        # 
+        self.node_name = vertex
         self.neighbors = {}
 
     def add_neighbor(self, vertex, weight=0):
         """Add a neighbor along a weighted edge."""
-        # TODO check if vertex is already a neighbot
+        # TODO check if vertex is already a neighbor
+        # This should 
+        self.neighbors[vertex] = vertex.node_name
+
+
         # TODO if not, add vertex to neighbors and assign weight.
 
     def __str__(self):
         """Output the list of neighbors of this vertex."""
-        return f'{self.id} adjacent to {[x.id for x in self.neighbors]}'
+        return f'{self.node_name} adjacent to {[x.node_name for x in self.neighbors]}'
 
     def get_neighbors(self):
         """Return the neighbors of this vertex."""
         # TODO return the neighbors
+        return self.neighbors
 
-    def get_id(self):
-        """Return the id of this vertex."""
-        return self.id
+    def get_node_name(self):
+        """Return the node_name of this vertex."""
+        return self.node_name
 
     def get_edge_weight(self, vertex):
         """Return the weight of this edge."""
@@ -44,20 +50,28 @@ class Vertex(object):
 A class demonstrating the essential
 facts and functionalities of graphs.
 """
+''' Remember
+Think of a Graph as a a Network 
+'''
 
 
+# class Network:
 class Graph:
     def __init__(self):
         """Initialize a graph object with an empty dictionary."""
-        self.vertList = {}
+        self.network_elements = {}
         self.numVertices = 0
 
     def add_vertex(self, key):
         """Add a new vertex object to the graph with the given key and return the vertex."""
         # TODO increment the number of vertices
+        self.numVertices += 1
         # TODO create a new vertex
+        new_vertex = Vertex('Egon')
         # TODO add the new vertex to the vertex list
+        new_vertex_node_name = new_vertex.node_name
         # TODO return the new vertex
+        print()
 
     def get_vertex(self, key):
         """Return the vertex if it exists"""
@@ -74,11 +88,11 @@ class Graph:
 
     def get_vertices(self):
         """return all the vertices in the graph"""
-        return self.vertList.keys()
+        return self.network_elements.keys()
 
     def __iter__(self):
         """Iterate over the vertex objects in the graph, to use sytax: for v in g"""
-        return iter(self.vertList.values())
+        return iter(self.network_elements.values())
 
 
 # Driver code
@@ -109,4 +123,4 @@ if __name__ == "__main__":
     print("The edges are: ")
     for v in g:
         for w in v.get_neighbors():
-            print("( %s , %s )" % (v.getId(), w.getId()))
+            print("( %s , %s )" % (v.getnode_name(), w.getnode_name()))
